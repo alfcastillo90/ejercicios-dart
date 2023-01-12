@@ -12,16 +12,25 @@ main() {
   // Crear una función para imprimir STDOUTS en lugar de
   // la siguiente línea. Luego todos los stdouts deberían ser
   // llamados usando nuestra función personalizada
-  stdout.writeln('=========== Usuario 1 =============');
+  processingUser(1, 1500);
+  processingUser(2, 1800);
+}
 
-  stdout.writeln('¿Cúal es su nombre?');
-  String nombre = stdin.readLineSync() ?? '';
+void print(String text) => stdout.writeln(text);
 
-  stdout.writeln('¿Qué edad tienes?');
-  String edad = stdin.readLineSync() ?? '';
+String read() => stdin.readLineSync() ?? '';
 
-  stdout.writeln('¿En qué país naciste?');
-  String pais = stdin.readLineSync() ?? '';
+void processingUser(int userId, double salary) {
+  print('=========== Usuario $userId =============');
+
+  print('¿Cúal es su nombre?');
+  String nombre = read();
+
+  print('¿Qué edad tienes?');
+  String edad = read();
+
+  print('¿En qué país naciste?');
+  String pais = read();
 
   final Map<String, dynamic> usuario = {
     'nombre': nombre,
@@ -29,10 +38,10 @@ main() {
     'pais': pais
   };
 
-  stdout.writeln('Usuario 1 sin deducciones');
-  stdout.writeln(usuario);
+  print('Usuario 1 sin deducciones');
+  print(usuario.toString());
 
-  double salario = 1500;
+  double salario = salary;
   double deducciones = salario * 0.15;
   double salarioNeto = salario - deducciones;
 
@@ -40,36 +49,5 @@ main() {
   usuario['deducciones'] = deducciones;
   usuario['salarioNeto'] = salarioNeto;
 
-  stdout.writeln(usuario);
-
-  // Persona 2
-  stdout.writeln('=========== Usuario 2 =============');
-
-  stdout.writeln('¿Cúal es su nombre?');
-  String nombre2 = stdin.readLineSync() ?? '';
-
-  stdout.writeln('¿Qué edad tienes?');
-  String edad2 = stdin.readLineSync() ?? '';
-
-  stdout.writeln('¿En qué país naciste?');
-  String pais2 = stdin.readLineSync() ?? '';
-
-  final Map<String, dynamic> usuario2 = {
-    'nombre': nombre2,
-    'edad': edad2,
-    'pais': pais2
-  };
-
-  stdout.writeln('Usuario 2 sin deducciones');
-  stdout.writeln(usuario2);
-
-  double salario2 = 1800;
-  double deducciones2 = salario2 * 0.15;
-  double salarioNeto2 = salario2 - deducciones2;
-
-  usuario2['salario'] = salario2;
-  usuario2['deducciones'] = deducciones2;
-  usuario2['salarioNeto'] = salarioNeto2;
-
-  stdout.writeln(usuario2);
+  print(usuario.toString());
 }
