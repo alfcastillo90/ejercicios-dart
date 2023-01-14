@@ -5,8 +5,10 @@ main() {
 
   person
     ..name = 'Alfredo'
-    ..age = 32
-    ..bio = 'I was born in Venezuela';
+    ..age = 32;
+  // ..bio = 'I was born in Venezuela'; //now bio it's private
 
-  print(person.toString());
+  person.bio = 'I was born in Maracay ';
+  print(person);
+  print(person.bio.toUpperCase());
 }
