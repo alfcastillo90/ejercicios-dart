@@ -1,11 +1,16 @@
 import 'dart:async';
 
 main() {
-  final streamController = StreamController<String>();
+  final streamController = StreamController<String>.broadcast();
   streamController.stream.listen((data) => print('Deployed: $data'),
       onError: (err) => print(err),
       cancelOnError: false,
-      onDone: () => print('Misson complete'));
+      onDone: () => print('1st Misson complete'));
+
+  streamController.stream.listen((data) => print('Deployed: $data'),
+      onError: (err) => print(err),
+      cancelOnError: false,
+      onDone: () => print('2nd Misson complete'));
 
   streamController.sink.add('Apollo 11');
   streamController.sink.add('Apollo 12');
